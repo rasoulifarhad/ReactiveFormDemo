@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { matchingPasswordsValidator } from '../validators';
 
 @Component({
@@ -17,49 +17,61 @@ export class ReactiveAddUserFormComponent {
   //   "password2" : new FormControl("", Validators.required),
   // });
 
-  addForm = this.fb.group({
 
-    username : ['', {
-      Validators : [
-        Validators.required
-      ],
-      updateOn : 'blur'
-    }],
+  addForm! : FormGroup;
 
-    email : ['', {
-      Validators : [
-        Validators.required
-      ],
-      updateOn : 'blur'
-    }],
+  constructor(private fb : FormBuilder) {
 
-    role : ['', {
-      Validators : [
-        Validators.required
-      ],
-      updateOn : 'blur'
-    }],
+    this.addForm = this.fb.group({
 
-    password : ['', {
-      Validators : [
-        Validators.required
-      ],
-      updateOn : 'blur'
-    }],
+      username : ['', {
+        Validators : [
+          Validators.required
+        ],
+        updateOn : 'blur'
+      }],
 
-    password2 : ['', {
-      Validators : [
-        Validators.required
-      ],
-      updateOn : 'blur'
-    }],
-  }, {
-    validators : [matchingPasswordsValidator()]
-});
+      email : ['', {
+        Validators : [
+          Validators.required
+        ],
+        updateOn : 'blur'
+      }],
 
+      role : ['', {
+        Validators : [
+          Validators.required
+        ],
+        updateOn : 'blur'
+      }],
 
-constructor(private fb : FormBuilder) {
+      password : ['', {
+        Validators : [
+          Validators.required
+        ],
+        updateOn : 'blur'
+      }],
 
+      password2 : ['', {
+        Validators : [
+          Validators.required
+        ],
+        updateOn : 'blur'
+      }],
+    }, {
+      validators : [matchingPasswordsValidator()]
+  });
+
+  this.addForm.controls['username'].valueChanges.subscribe(
+    (value: string) => {
+      console.log('username changed to:', value);
+    });
+
+  this.addForm.valueChanges.subscribe(
+    (form : any) => {
+      console.log('form changed to: ', form);
+    }
+  );
 }
 
 onSubmitModelBased() {

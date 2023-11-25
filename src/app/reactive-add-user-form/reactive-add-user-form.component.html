@@ -1,26 +1,45 @@
 <div id="ui raised segment">
   <h2 class="ui header">Add user with FormBuilde</h2>
-  <form [formGroup]="addForm" (ngSubmit)="onSubmitModelBased()" class="ui form">
+  <form [formGroup]="addForm"
+        (ngSubmit)="onSubmitModelBased()"
+        class="ui form"
+        [class.error]="!addForm.valid && addForm.touched">
 
-    <div class="field">
+    <div class="field" [class.error]="!addForm.controls['username'].valid && addForm.controls['username'].touched">
       <label for="username">User Name:</label>
       <input type="text" placeholder="Enter username" formControlName="username">
     </div>
     <br>
-    <div class="field" >
+    <div *ngIf="addForm.controls['username'].hasError('required')"
+          class="ui error message">
+      Username is required
+    </div>
+    <div class="field" [class.error]="!addForm.controls['email'].valid && addForm.controls['email'].touched">
       <label for="email">Email:</label>
       <input type="text" placeholder="Enter email address" formControlName="email">
     </div>
+    <div *ngIf="addForm.controls['email'].hasError('required')"
+          class="ui error message">
+      Email is required
+    </div>
     <br>
-    <div class="field">
+    <div class="field" [class.error]="!addForm.controls['password'].valid && addForm.controls['password'].touched">
       <label for="password">Password:</label>
       <input type="password" placeholder="Enter password" formControlName="password">
     </div>
+    <div *ngIf="addForm.controls['password'].hasError('required')"
+          class="ui error message">
+      Password is required
+    </div>
 
     <br>
-    <div class="field">
+    <div class="field" [class.error]="!addForm.controls['password2'].valid && addForm.controls['password2'].touched">
       <label for="password2">Confirm Password:</label>
       <input type="password" placeholder="Confirm password" name="password2" formControlName="password2">
+    </div>
+    <div *ngIf="addForm.controls['password2'].hasError('required')"
+          class="ui error message">
+          password2 is required
     </div>
     <br>
     <div class="error" *ngIf="addForm.controls['password2'].touched">
@@ -31,7 +50,7 @@
       </div>
     </div>
     <br>
-    <div class="field">
+    <div class="field" [class.error]="!addForm.controls['role'].valid && addForm.controls['role'].touched">
       <label for="role">Role: </label>
       <select name="role" formControlName="role">
         <option value="admin">Admin</option>
@@ -39,9 +58,13 @@
         <option value="Guest">guest</option>
       </select>
     </div>
+    <div *ngIf="addForm.controls['role'].hasError('required')"
+          class="ui error message">
+      role is required
+    </div>
     <br>
     <br>
-    <p>Form status: {{addForm.status}}</p>
+    <div *ngIf="!addForm.valid" class="ui error message">Form is invalid</div>
     <div>
       <button type="submit" [disabled]="!addForm.valid"  class="ui button">
         <span>
