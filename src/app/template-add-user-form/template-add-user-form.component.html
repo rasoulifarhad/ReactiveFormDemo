@@ -1,0 +1,47 @@
+<div id="ui raised segment">
+  <h2 class="ui header">Add user form</h2>
+  <form
+      #addForm="ngForm"
+      (ngSubmit)="onSubmitModelBased(addForm.value)"
+      class="ui form">
+
+    <div class="field">
+      <label for="username">User Name:</label>
+      <input type="text" placeholder="Enter username" id="username" name="username" ngModel>
+    </div>
+    <br>
+    <div class="field">
+      <label for="email">Email:</label>
+      <input type="text" placeholder="Enter email address" id="email" name="email" ngModel>
+    </div>
+    <br>
+    <div class="field">
+      <label for="password">Password:</label>
+      <input type="password" placeholder="Enter password" id="password" name="password" ngModel>
+    </div>
+
+    <br>
+    <div class="field">
+      <label for="password2">Confirm Password:</label>
+      <input type="password" placeholder="Confirm password" name="password2" id="password2" ngModel>
+    </div>
+    <br>
+    <div class="field">
+      <label for="role">Role: </label>
+      <select name="role" id="role" ngModel>
+        <option value="admin">Admin</option>
+        <option value="accounts">Accounts</option>
+        <option value="Guest">guest</option>
+      </select>
+    </div>
+    <br>
+    <br>
+    <p>Form status: {{addForm.status}}</p>
+    <div>
+      <button type="submit" class="ui button">
+        Add User
+      </button>
+
+   </div>
+  </form>
+</div>

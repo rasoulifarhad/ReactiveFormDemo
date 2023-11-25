@@ -87,9 +87,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/Semantic-UI-CSS-master/semantic.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/Semantic-UI-CSS-master/semantic.min.js"
+
+            ]
           }
         }
       }
