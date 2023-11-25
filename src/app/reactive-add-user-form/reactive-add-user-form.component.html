@@ -1,23 +1,24 @@
-<div id="form">
-  <form [formGroup]="addForm" (ngSubmit)="onSubmitModelBased()">
+<div id="ui raised segment">
+  <h2 class="ui header">Add user with FormBuilde</h2>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmitModelBased()" class="ui form">
 
-    <div>
+    <div class="field">
       <label for="username">User Name:</label>
       <input type="text" placeholder="Enter username" formControlName="username">
     </div>
     <br>
-    <div>
+    <div class="field" >
       <label for="email">Email:</label>
       <input type="text" placeholder="Enter email address" formControlName="email">
     </div>
     <br>
-    <div>
+    <div class="field">
       <label for="password">Password:</label>
       <input type="password" placeholder="Enter password" formControlName="password">
     </div>
 
     <br>
-    <div>
+    <div class="field">
       <label for="password2">Confirm Password:</label>
       <input type="password" placeholder="Confirm password" name="password2" formControlName="password2">
     </div>
@@ -30,7 +31,7 @@
       </div>
     </div>
     <br>
-    <div>
+    <div class="field">
       <label for="role">Role: </label>
       <select name="role" formControlName="role">
         <option value="admin">Admin</option>
@@ -42,16 +43,16 @@
     <br>
     <p>Form status: {{addForm.status}}</p>
     <div>
-      <button type="submit" [disabled]="!addForm.valid">
+      <button type="submit" [disabled]="!addForm.valid"  class="ui button">
         <span>
           <i class="fa fa-user-plus" aria-hidden="true"></i>
         </span>
         Add User
       </button>
 
-      <button (click)="fullUpdate()">Full Update</button>
-      <button (click)="partialUpdate()">Partial Update</button>
-      <button (click)="reset()">Reset</button>
+      <button (click)="fullUpdate()" class="ui button">Full Update</button>
+      <button (click)="partialUpdate()" class="ui button">Partial Update</button>
+      <button (click)="reset()" class="ui button">Reset</button>
     </div>
   </form>
 </div>
