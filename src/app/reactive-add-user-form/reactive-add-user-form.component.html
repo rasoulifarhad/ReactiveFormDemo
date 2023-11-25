@@ -9,7 +9,6 @@
       <label for="username">User Name:</label>
       <input type="text" placeholder="Enter username" formControlName="username">
     </div>
-    <br>
     <div *ngIf="addForm.controls['username'].hasError('required')"
           class="ui error message">
       Username is required
@@ -22,7 +21,6 @@
           class="ui error message">
       Email is required
     </div>
-    <br>
     <div class="field" [class.error]="!addForm.controls['password'].valid && addForm.controls['password'].touched">
       <label for="password">Password:</label>
       <input type="password" placeholder="Enter password" formControlName="password">
@@ -31,8 +29,6 @@
           class="ui error message">
       Password is required
     </div>
-
-    <br>
     <div class="field" [class.error]="!addForm.controls['password2'].valid && addForm.controls['password2'].touched">
       <label for="password2">Confirm Password:</label>
       <input type="password" placeholder="Confirm password" name="password2" formControlName="password2">
@@ -41,7 +37,6 @@
           class="ui error message">
           password2 is required
     </div>
-    <br>
     <div class="error" *ngIf="addForm.controls['password2'].touched">
       <div
           class="alert-danger errormessageadduser"
@@ -49,7 +44,6 @@
         Passwords do nat matched
       </div>
     </div>
-    <br>
     <div class="field" [class.error]="!addForm.controls['role'].valid && addForm.controls['role'].touched">
       <label for="role">Role: </label>
       <select name="role" formControlName="role">
@@ -62,8 +56,6 @@
           class="ui error message">
       role is required
     </div>
-    <br>
-    <br>
     <div *ngIf="!addForm.valid" class="ui error message">Form is invalid</div>
     <div>
       <button type="submit" [disabled]="!addForm.valid"  class="ui button">
